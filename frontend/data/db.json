@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Perfume Teste",
+      "body": "Why do we use it?\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ",
+      "img": "perfume1.jpg",
+      "price": "2"
+    },
+    {
+      "id": "3",
+      "title": "Perfume 3",
+      "body": "Why do we use it?\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ",
+      "img": "perfume3.jpg",
+      "price": 1.5
+    },
+    {
+      "id": "b97c",
+      "title": "Teste",
+      "body": "Teste",
+      "price": "10",
+      "img": "perfume2.jpg"
+    }
+  ]
+}
