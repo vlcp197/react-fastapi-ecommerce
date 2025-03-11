@@ -1,21 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../components/useFetch";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { data: product, error, isPending } =  useFetch('http://localhost:3000/products/' + id);
+  const { data: product, error, isPending } = useFetch('http://localhost:3000/products/' + id);
+
+  const [quantity, setQuantity] = useState(0); 
 
   const navigate = useNavigate();
-
-  const handleDeleteClick = () => {
-    fetch('http://localhost:3000/products/' + product.id, {
-      method: 'DELETE'
-    }).then(() => {
-      navigate('/');
-    });
-  }
 
   return (
     <div className="product-details">
@@ -25,15 +19,21 @@ const ProductDetails = () => {
         <article>
           <img className="img-detail" src={`../${product.img}`} alt="img" />
           <br />
-          <button style={{
-            "marginLeft": '65%',
-          }}>Adicionar ao carrinho</button>
+          <div style={{display: "flex", gap: "200px", alignItems: "baseline"}}>
+              <div style={{display: "flex", gap: "20px", alignItems: "baseline"}}>
+                <button>-</button>
+                <span>{quantity}</span>
+                <button>+</button>
+              </div>
+              <button>Adicionar ao carrinho</button>
+          </div>
           <br />
           <h2>{product.title}</h2>
           <p>R$ {product.price}</p>
           <div>{product.body}</div>
         </article>
       )}
+
     </div>
   );
 }

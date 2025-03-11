@@ -20,7 +20,7 @@ export default function Update(){
       axios.put('http://localhost:3000/products/'+id, data)
       .then(res =>{
         alert("Produto atualizado com sucesso!");
-        navigate("/")
+        navigate("/admin")
       })
     }
 

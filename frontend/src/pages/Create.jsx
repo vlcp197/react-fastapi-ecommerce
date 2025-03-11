@@ -6,13 +6,13 @@ const Create = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [price, setPrice] = useState('');
-  const [image, setImage] = useState('');
+  const [img, setImg] = useState('');
   const [isPending, setIsPending] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const product = {title, body, price};
+    const product = {title, body, price, img};
 
     setIsPending(true);
 
@@ -54,8 +54,7 @@ const Create = () => {
         <label>Imagem do produto:</label>
         <input 
           type="file" 
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
+          onChange={(e) => setImg(e.target.files[0].name)}
         />
         { !isPending && <button>Adicionar perfume</button> }
         { isPending && <button disabled >Adicionando produto...</button> }

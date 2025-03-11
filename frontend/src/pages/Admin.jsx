@@ -30,10 +30,22 @@ export default function Crud() {
     }, []);
 
 
+    const handleDeleteClick = (event) => {
+        fetch('http://localhost:3000/products/' + event.target.id, {
+          method: 'DELETE'
+        }).then(() => {
+            setRecords(records.filter(record => record.id !== event.target.id))
+        });
+      }
+    
+
     return (
         <div className="container mt-5">
-            <button onClick={handleLogout}>Logout</button>
-            <div className="text-end"><Link to="/create" className="btn btn-primary">Adicionar +</Link></div>
+            <div style={{display:"flex", gap: "470px"}}>
+                <button className="btn btn-secondary" onClick={handleLogout}>Logout</button>
+                <div className="text-end"><Link to="/create" className="btn btn-primary">Adicionar</Link></div>
+
+            </div>
             <table className="table"> 
                 <thead>
                     <tr>
@@ -51,9 +63,9 @@ export default function Crud() {
                             <td>{limitWords(d.body,20)}</td>
                             <td><img style={{width:"150px", height:"auto", objectFit:"cover"}} src={d.img}  /></td>
                             <td>R$ {d.price}</td>
-                            <td>
+                            <td style={{display: "flex"}}>
                                 <Link to={`/update/${d.id}`} className="btn btn-sm btn-success">Atualizar</Link>
-                                <Link to={`/delete/${d.id}`} className="btn btn-sm ms-1 btn-danger">Deletar</Link>
+                                <button id={d.id} className="btn btn-sm ms-1 btn-danger" onClick={handleDeleteClick}>Deletar</button>
                             </td>
                         </tr>
                     ))}
